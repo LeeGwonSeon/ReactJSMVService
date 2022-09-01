@@ -5,19 +5,26 @@
 </body>
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
-<script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
     const root = document.getElementById("root");
+    const Title = (
+        <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
+            Hello React World!!
+        </h3>
+    );
+    
+    /*
+     JSX를 사용하지 않고 React를 사용한 옛날 방식 참고로 남김
     const h3 = React.createElement("h3", {
         id: "title",
         onMouseEnter: () => console.log("mouse enter"),
     }, "Hello React World!!");
-    const btn = React.createElement("button", {
-        onClick: () => console.log("I'm clicked"),
-        style: {
+    */
+    const Button = <button style={{
             backgroundColor:"tomato",
-        }
-    }, "Click me");
-    const container = React.createElement("div", null, [h3, btn]);
+        }} onClick={() => console.log("I'm clicked")}>Click me</button>
+    const container = React.createElement("div", null, [Title, Button]);
     ReactDOM.render(container, root);
 </script>
 </html>
