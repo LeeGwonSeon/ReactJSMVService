@@ -8,27 +8,22 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     const root = document.getElementById("root");
-    function Title() {
+    let counter = 0;
+    function countUp() {
+        counter = counter + 1;
+        render();
+    }
+    function render(){
+        ReactDOM.render(<Container />, root);
+    }
+    function Container () {
         return (
-        <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
-            Hello React World!!
-        </h3>
-    );
-    } 
-    
-    /*
-     JSX를 사용하지 않고 React를 사용한 옛날 방식 참고로 남김
-    const h3 = React.createElement("h3", {
-        id: "title",
-        onMouseEnter: () => console.log("mouse enter"),
-    }, "Hello React World!!");
-    */
-    const Button = () => (<button style={{
-            backgroundColor:"tomato",
-        }} onClick={() => console.log("I'm clicked")}>Click me</button>);
-    const Container = () => ( <div>
-            <Title /> <Button />
-        </div>);
-    ReactDOM.render(<Container />, root);
+            <div>
+                <h3>Total clicks: {counter}</h3>
+                <button onClick={countUp}>Click me</button>
+            </div>
+        );
+    }
+    render();
 </script>
 </html>
